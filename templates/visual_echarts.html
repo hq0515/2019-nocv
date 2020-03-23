@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="utf-8">
+    <script src="{{ url_for('static', filename = 'echarts.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'china.js') }}"></script>
+	<script src="{{ url_for('static', filename = 'jquery-3.3.1.min.js') }}"></script>
+</head>
+<body style="height:100%;">
+    <div id="main" style="width:100%;height:100%;"></div>
+    <script>
+        var chart = echarts.init(document.getElementById('main'));
+        var data = {{ d| tojson}};
+	var mydata = [
+        { name: data['name'][0], value: data['value'][0] },
+        { name: data['name'][1], value: data['value'][1] },
+        { name: data['name'][2], value: data['value'][2] },
+        { name: data['name'][3], value: data['value'][3] },
+        { name: data['name'][4], value: data['value'][4] },
+        { name: data['name'][5], value: data['value'][5] },
+        { name: data['name'][6], value: data['value'][6] },
+        { name: data['name'][7], value: data['value'][7] },
+        { name: data['name'][8], value: data['value'][8] },
+        { name: data['name'][9], value: data['value'][9] },
+        { name: data['name'][10], value: data['value'][10] },
+        { name: data['name'][11], value: data['value'][11] },
+        { name: data['name'][12], value: data['value'][12] },
+        { name: data['name'][13], value: data['value'][13] },
+        { name: data['name'][14], value: data['value'][14] },
+        { name: data['name'][15], value: data['value'][15] },
+        { name: data['name'][16], value: data['value'][16] },
+        { name: data['name'][17], value: data['value'][17] },
+        { name: data['name'][18], value: data['value'][18] },
+        { name: data['name'][19], value: data['value'][19] },
+        { name: data['name'][20], value: data['value'][20] },
+        { name: data['name'][21], value: data['value'][21] },
+        { name: data['name'][22], value: data['value'][22] },
+        { name: data['name'][23], value: data['value'][23] },
+        { name: data['name'][24], value: data['value'][24] },
+        { name: data['name'][25], value: data['value'][25] },
+        { name: data['name'][26], value: data['value'][26] },
+        { name: data['name'][27], value: data['value'][27] },
+        { name: data['name'][28], value: data['value'][28] },
+        { name: data['name'][29], value: data['value'][29] },
+        { name: data['name'][30], value: data['value'][30] },
+        { name: data['name'][31], value: data['value'][31] },
+        { name: data['name'][32], value: data['value'][32] },
+        { name: data['name'][33], value: data['value'][33] }
+	];
+ 
+	var option = {
+		backgroundColor: '#FFFFFF',
+		title: {
+			text: '全国疫情确诊人数（截止至3月22号)',
+			x:'center'
+		},
+		tooltip : {
+			trigger: 'item'
+		},
+		series: [{
+			name: '确诊人数',
+			type: 'map',
+			mapType: 'china', 
+			roam: true,
+			label: {
+				normal: {
+					show: false
+				},
+				emphasis: {
+					show: false
+				}
+			},
+			data:mydata
+		}]
+	};
+    chart.setOption(option);
+    </script>
+</body>
+</html>
